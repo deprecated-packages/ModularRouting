@@ -1,0 +1,5 @@
+services:
+	- Zenify\ModularRouting\Tests\Routing\RouterFactory
+
+extensions:
+	- Zenify\ModularRouting\DI\ModularRoutingExtension
