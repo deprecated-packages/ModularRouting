@@ -25,7 +25,39 @@ extensions:
 
 ## Usage
 
-...
+Create class implementing `Zenify\ModularRouting\Routing\RouterFactoryInterface`:
+ 
+```php
+namespace App\Modules\SomeModule\Routing;
+
+use Nette\Application\Routers\Route;
+use Nette\Application\Routers\RouteList;
+use Zenify\ModularRouting\Routing\RouterFactoryInterface;
+
+class SomeModuleRouterFactory implements RouterFactoryInterface
+{
+	/**
+	 * {@inheritdoc}
+	 */
+	public function create()
+	{
+		$router = new RouteList('SomeModule');
+		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
+		return $router;
+	}
+}
+```
+ 
+ 
+And register it to `config.neon`:
+
+```yaml
+services:
+	- App\Modules\SomeModule\Routing\SomeModuleRouterFactory
+```
+
+That's it!
+
 
 
 ## Testing
