@@ -19,9 +19,6 @@ class ModularRoutingExtensionTest extends PHPUnit_Framework_TestCase
 		$extension = $this->createExtension();
 		$builder = $extension->getContainerBuilder();
 
-		// simulates ApplicationExtension
-		$netteRouter = $builder->addDefinition('netteRouter')
-			->setClass(RouteList::class);
 
 		// add our router
 		$builder->addDefinition('ourRouter')
@@ -32,11 +29,9 @@ class ModularRoutingExtensionTest extends PHPUnit_Framework_TestCase
 
 		/** @var ServiceDefinition $netteRouter */
 		$this->assertCount(1, $netteRouter->getSetup());
-		$setup = $netteRouter->getSetup();
-
 		$this->assertSame(
 			['@Zenify\ModularRouting\Tests\Routing\RouterFactory', 'create'],
-			$setup[0]->arguments[1]->entity
+			$netteRouter->getSetup()[0]->arguments[1]->entity
 		);
 	}
 
@@ -46,8 +41,13 @@ class ModularRoutingExtensionTest extends PHPUnit_Framework_TestCase
 	 */
 	private function createExtension()
 	{
+		$builder = new ContainerBuilder;
+		// simulates ApplicationExtension
+		$builder->addDefinition('netteRouter')
+			->setClass(RouteList::class);
+
 		$extension = new ModularRoutingExtension;
-		$extension->setCompiler(new Compiler(new ContainerBuilder), 'compiler');
+		$extension->setCompiler(new Compiler($builder), 'compiler');
 		return $extension;
 	}
 
