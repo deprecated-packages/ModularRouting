@@ -10,20 +10,18 @@ matrix:
   allow_failures:
     - php: 7.0
     - php: hhvm
-  include:
-    - php: 5.6
-      env: NETTE_VERSION='2.2.*'
+
 
 install:
-  - wget https://raw.githubusercontent.com/Zenify/CI/master/travis/coverage-init.sh && sh coverage-init.sh
-  - sh -c 'if [ "$NETTE_VERSION" != "" ]; then composer require --no-update nette/nette=$NETTE_VERSION; fi;'
+  - composer create-project --prefer-source --dev --no-interaction zenify/ci vendor/ci @dev
+  - . vendor/ci/travis/coverage-init.sh
   - composer install --prefer-source
 
 before_script:
-  - wget https://raw.githubusercontent.com/Zenify/CI/master/travis/static-analysis.sh && sh static-analysis.sh
+  - . vendor/ci/travis/static-analysis.sh
 
 script:
   - phpunit $PHPUNIT_FLAGS
 
 after_script:
-  - wget https://raw.githubusercontent.com/Zenify/CI/master/travis/coverage-send.sh && sh coverage-send.sh
+  - . vendor/ci/travis/coverage-send.sh

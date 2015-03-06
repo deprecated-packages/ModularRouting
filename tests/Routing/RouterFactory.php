@@ -15,7 +15,7 @@ class RouterFactory implements RouterFactoryInterface
 	 */
 	public function create()
 	{
-		$router = new RouteList();
+		$router = new RouteList;
 		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 		return $router;
 	}
