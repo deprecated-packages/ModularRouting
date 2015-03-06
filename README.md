@@ -7,9 +7,9 @@
 [![Latest stable](https://img.shields.io/packagist/v/zenify/modular-routing.svg?style=flat-square)](https://packagist.org/packages/zenify/modular-routing)
 
 
-## Installation
+## Install
 
-Install the latest version via composer:
+Via Composer:
 
 ```sh
 $ composer require zenify/modular-routing
@@ -34,8 +34,10 @@ use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
 use Zenify\ModularRouting\Routing\RouterFactoryInterface;
 
+
 class SomeModuleRouterFactory implements RouterFactoryInterface
 {
+	
 	/**
 	 * {@inheritdoc}
 	 */
@@ -45,11 +47,11 @@ class SomeModuleRouterFactory implements RouterFactoryInterface
 		$router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 		return $router;
 	}
+	
 }
 ```
  
- 
-And register it to `config.neon`:
+Register it to `config.neon`:
 
 ```yaml
 services:
