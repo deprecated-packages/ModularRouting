@@ -1,18 +1,19 @@
 {
 	"name": "zenify/modular-routing",
-	"description": "ModularRouting description",
+	"description": "Nette extension for modular routing",
 	"license": "MIT",
 	"authors": [
 		{ "name": "Tomas Votruba", "homepage": "http://tomasvotruba.cz", "email": "tomas.vot@gmail.com" }
 	],
 	"require": {
 		"php": ">=5.5",
-		"nette/application": "~2.2",
-		"nette/robot-loader": "~2.2",
-		"tracy/tracy": "~2.2"
+		"nette/application": "~2.3",
+		"nette/di": "~2.3",
+		"nette/robot-loader": "~2.3",
+		"tracy/tracy": "~2.3"
 	},
 	"require-dev": {
-		"nette/bootstrap": "~2.2"
+		"nette/bootstrap": "~2.3"
 	},
 	"autoload": {
 		"psr-4": {
