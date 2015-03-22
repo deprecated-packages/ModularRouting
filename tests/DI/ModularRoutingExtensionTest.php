@@ -9,7 +9,7 @@ use Nette\DI\ContainerBuilder;
 use Nette\DI\ServiceDefinition;
 use PHPUnit_Framework_TestCase;
 use Zenify\ModularRouting\DI\ModularRoutingExtension;
-use Zenify\ModularRouting\Tests\Routing\RouterFactory;
+use Zenify\ModularRouting\Tests\Routing\RouterSource\RouterFactory;
 
 
 class ModularRoutingExtensionTest extends PHPUnit_Framework_TestCase
@@ -31,7 +31,7 @@ class ModularRoutingExtensionTest extends PHPUnit_Framework_TestCase
 		$netteRouter = $builder->findByType(IRouter::class)['netteRouter'];
 		$this->assertCount(1, $netteRouter->getSetup());
 		$this->assertSame(
-			['@Zenify\ModularRouting\Tests\Routing\RouterFactory', 'create'],
+			['@ourRouter', 'create'],
 			$netteRouter->getSetup()[0]->arguments[1]->entity
 		);
 	}

@@ -1,5 +1,8 @@
 services:
-	- Zenify\ModularRouting\Tests\Routing\RouterFactory
+	- Zenify\ModularRouting\Tests\Routing\RouterSource\RouterFactory
+	- Zenify\ModularRouting\Tests\Routing\RouterRankedSource\RankedRouterFactory
+	- Zenify\ModularRouting\Tests\Routing\RouterRankedSource\RankedRouterFactory2
+	- Zenify\ModularRouting\Tests\Routing\RouterRankedSource\RankedRouterFactory3
 
 extensions:
 	- Zenify\ModularRouting\DI\ModularRoutingExtension

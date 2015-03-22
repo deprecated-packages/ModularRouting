@@ -1,6 +1,6 @@
 <?php
 
-namespace Zenify\ModularRouting\Tests\Routing;
+namespace Zenify\ModularRouting\Tests\Routing\RouterSource;
 
 use Nette\Application\Routers\Route;
 use Nette\Application\Routers\RouteList;
